@@ -1,0 +1,97 @@
+
+body {
+    background-color: #9EF5FF;
+}
+
+/* Header */
+#header {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #AACC00;
+}
+
+
+/* obere Zeile */
+#logo {
+    display: inline;
+}
+#login {
+    float: right;
+    display: inline;
+}
+
+/* untere Zeile */
+#header-unten {
+    padding-top: 10;
+}
+.header-item {
+    height: 30;
+}
+
+#suchtaste {
+    background-color: #AA0000;
+}
+
+
+#main {
+    width: 100%;
+    overflow: hidden; /* add this to contain floated children */
+}
+
+/* Kategorien */
+#kategorie-liste {
+    background-color: #BBDD11;
+    width: 15%;
+    float: left;
+}
+/* Link nicht unterstreichen */
+.kategorie a {
+    text-decoration: none;
+    color: blue;
+}
+.kategorie a:hover {
+    text-decoration: underline;
+}
+#kategorie-ausgewaehlt {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+
+/* Ergebnisse */
+#ergebnisse {
+    width: 85%;
+    float: right;
+}
+#ergebnisse a {
+    text-decoration: none;
+    color: black;
+}
+.ergebnis {
+    margin: 5;
+    overflow: hidden;
+    background-color: #40ECFF;
+}
+.ergebnis:hover {
+    background-color: #6BF0FF;
+}
+.erg-bild {
+    display: inline-block;
+}
+.erg-1 {
+    display: inline-block;
+}
+.erg-title {
+    font-size: 120%;
+}
+.erg-beschreibung {
+    font-size: 80%;
+}
+.erg-2 {
+    display: inline-block;
+    float: right;
+    text-align: right;
+}
+.erg-preis {
+    font-size: 120%;
+}
