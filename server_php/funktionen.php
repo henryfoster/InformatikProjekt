@@ -4,7 +4,7 @@
 /*
 
 z.B.:
-Suchergebnis: Liste [ Title, ISBN, Jahr, Beschreibung, Zustand, Kontakt, Preis ]
+Suchergebnis: Liste [ ID, Titel, ISBN, Jahr, Beschreibung, Zustand, Kontakt, Preis ]
 
 */
 
@@ -12,16 +12,68 @@ Suchergebnis: Liste [ Title, ISBN, Jahr, Beschreibung, Zustand, Kontakt, Preis ]
 // Vor.: ...
 // Eff.: liefert die Liste der Ergebnisse ...
 function suche($q, $sort, $kat) {
-    // hier kommt die SQL-Anfrage ...
-    // http://www.w3schools.com/php/php_mysql_intro.asp
+    $erg = array();
     
-    $erg = array ();
+    // hier kommt die SQL-Anfrage ...
     for ($i = 0; $i < 100; $i++) {
         array_push($erg, randombuch ($q));
     }
     
+    $erg = sortieren($erg, $sort);
     return $erg;
 }
+function suche_id($id) {
+    // sql ...
+    return randombuch("Buch " . $id);
+}
+// Vor.: keine
+// Eff.: liefert die hochgeladenen Bilder zum Buch mit im Argument agbegebener ID
+function bilder_zum_buch($buch_id) {
+    $erg = array();
+    
+    // sql ...
+    for ($i = 0; $i < 10; $i++) {
+        $n = rand(0, 9);
+        array_push($erg, "img/buch$n.jpg");
+    }
+    
+    return $erg;
+}
+// Vor.: Liste besteht aus Büchern
+// Eff.: liefert die sortierte Liste
+function sortieren($erg, $sort) {
+    $arg = "titel";// $sort 0 oder 1
+    if ($sort >= 2)
+        $arg = "preis";// $sort 2 oder 3
+    
+    $erg = quicksort($erg, $arg);
+    
+    if ($sort % 2 == 1)
+        $erg = array_reverse($erg);
+    return $erg;
+    
+}
+// Vor.: Liste besteht aus Büchern
+// Eff.: liefert die nach $arg (titel, preis, etc) sortierte Liste
+function quicksort($erg, $arg) {
+    if (count($erg) == 0)
+        return $erg;
+    
+    $p = $erg[0];
+    $a = array();
+    $b = array();
+    for ($i = 1; $i < count($erg); $i++) {
+        if ($erg[$i][$arg] < $p[$arg])
+            array_push($a, $erg[$i]);
+        else
+            array_push($b, $erg[$i]);
+    }
+    
+    $a = quicksort($a, $arg);
+    array_push($a, $p);
+    return array_merge($a, quicksort($b, $arg));
+}
+
 
 // zum Testen
 function randombuch($q) {
@@ -40,6 +92,7 @@ function randombuch($q) {
     $preis = rand(1, 50);
     
     return array (
+        "id" => "B" . rand(500000, 999999),
         "titel" => "$q buch " . rand(1000, 9999),
         "isbn" => $isbn,
         "jahr" => $jahr,
