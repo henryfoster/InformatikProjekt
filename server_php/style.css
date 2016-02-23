@@ -1,6 +1,7 @@
 
 body {
     background-color: #9EF5FF;
+    font-family: "Arial", Arial, serif;
 }
 
 /* Header */
@@ -26,16 +27,52 @@ body {
 }
 .header-item {
     height: 30;
+    display: inline;
 }
 
-#suchtaste {
-    background-color: #AA0000;
+#header-unten button {
+    background-color: #88AA00;
+    border: 0;
+}
+#header-unten a {
+    text-decoration: none;
+    color: blue;
+}
+#header-unten button:hover {
+    opacity: 0.7;
+}
+#header-unten form {
+    display: inline;
+}
+#zuruecktaste {
+    display: inline;
+    margin-left: 100px;
+}
+#ergebnisliste-steuerung {
+    float: right;
+}
+#ergebnisliste-steuerung div {
+    margin-left: 20px;
+}
+#seiten span {
+    font-size: 150%;
+    text-align: middle;
+}
+.taste-seitenwahl-grau {
+    background-color: #AAAAAA !important;
+}
+.taste-seitenwahl-grau:hover {
+    opacity: 1 !important;
+}
+#sortierung-ausgewaehlt {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 
 #main {
     width: 100%;
-    overflow: hidden; /* add this to contain floated children */
+    overflow: hidden;
 }
 
 /* Kategorien */
@@ -68,6 +105,7 @@ body {
     color: black;
 }
 .ergebnis {
+    height: 80px;
     margin: 5;
     overflow: hidden;
     background-color: #40ECFF;
@@ -76,22 +114,114 @@ body {
     background-color: #6BF0FF;
 }
 .erg-bild {
+    width:80px;
+    height:80px;
     display: inline-block;
+}
+.erg-bild img {
+    max-width:80px;
+    max-height:80px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .erg-1 {
     display: inline-block;
+    height:80px;
+    vertical-align: top;
 }
 .erg-title {
     font-size: 120%;
+    margin-bottom: 10px;
+}
+.erg-jahr {
+    margin-right: 10px;
 }
 .erg-beschreibung {
+    margin-top: 5px;
     font-size: 80%;
 }
 .erg-2 {
     display: inline-block;
     float: right;
     text-align: right;
+    height:80px;
+    vertical-align: top;
 }
 .erg-preis {
     font-size: 120%;
+}
+
+
+/* Buch */
+#buch-details {
+    margin: 5px;
+}
+#buch-bild-gross {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #AAAAAA;
+}
+#buch-bild-gross img {
+    display: block;
+    max-width:400px;
+    max-height:400px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#buch-bilder-klein {
+    overflow: none;
+    max-width:400px;
+}
+.buch-bild-klein {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #FAFAFA;
+    border: 1px solid #AAAAAA;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.buch-bild-klein:hover {
+    opacity: 0.5;
+}
+.buch-bild-klein img {
+    display: block;
+    max-width:50px;
+    max-height:50px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#buch-bilder {
+    display: inline-block;
+}
+#buch-daten {
+    display: inline-block;
+    vertical-align: top;
+}
+#buch-daten div {
+    padding-bottom: 20px;
+}
+#buch-titel {
+    font-size: 200%;
+}
+#buch-isbn {
+    font-size: 120%;
+}
+#buch-preis {
+    font-size: 150%;
 }
