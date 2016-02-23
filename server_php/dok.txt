@@ -1,0 +1,36 @@
+
+
+Benjamin Tar
+13.02.2016 10:30 - 14:00
+Programmierung der Seite
+
+index.php:
+    Hauptseite und Suche
+header.php:
+    Oberer Teil mit Logo und Suchfeld, kann in allen weiteren Seiten benutzt werden
+funktionen.php:
+    enthält die Suchfunktion, nur Test, später SQL-Schnittstelle, usw.
+style.css:
+    Design
+
+
+Erstellung temporären Webhosts bei https://www.000webhost.com/
+
+http://mfsb.site88.net
+
+
+----------
+23.02.2016
+14:30 - 17:00
+
+Einbau der Sortiertasten und Sortierfunktion
+Tasten für mehrere Seiten der Ergebnisse
+Buchdetails (buch.php)
+Testbilder
+Funktionen: (immer noch nur mit zufälligen Testdaten)
+ suche_id($id) : liefert das Buch mit der ID
+ bilder_zum_buch($buch_id) : liefert die hochgeladenen Bilder zum Buch mit im Argument agbegebener ID
+ sortieren($erg, $sort) : liefert die sortierte Liste
+ quicksort($erg, $arg) : liefert die nach $arg (titel, preis, etc) sortierte Liste
+
+-
