@@ -12,21 +12,32 @@ ini_set('display_errors', 'on');
 include ('funktionen.php');
 
 
-// Argumente in PHP: "seite.de/?q=suchbegriff&sort=0&kat=kategorie1,kategorie2"
+// Argumente in PHP: "seite.de/?q=suchbegriff&sort=0&kat=kategorie1..."
+// Details zum Buch: "seite.de/?q=suchbegriff&sort=0&kat=kategorie1...&buch=BuchID"
 
-// Suchbegriff: Argument "q"
+// Argumente
+$_ARG_Q = "q";// Suchbegriff
+$_ARG_SORT = "sort";// Sortieren: 0: Name aufsteigend, 1: absteigend, 2: Preis auf ...
+$_ARG_KAT = "kat";// Suche in Kategorien
+$_ARG_SEITE = "p";// Nummer der Seite in Trefferliste
+$_ARG_BUCH = "buch";// Details zum Buch
+
+// Abfrege der Argumente aus URL
 $arg_q = "";
-if (isset($_GET["q"]))
-    $arg_q = $_GET["q"];
-// Sortieren: Argument "sort"
-// 0: Name aufsteigend, 1: absteigend, 2: Preis auf ...
-$arg_sort = "";
-if (isset($_GET["sort"]))
-    $arg_q = $_GET["sort"];
-// Suche in Kategorien: Argument "kat"
+if (isset($_GET[$_ARG_Q]))
+    $arg_q = $_GET[$_ARG_Q];
+$arg_sort = "0";
+if (isset($_GET[$_ARG_SORT]))
+    $arg_sort = $_GET[$_ARG_SORT];
 $arg_kat = "";
-if (isset($_GET["kat"]))
-    $arg_kat = $_GET["kat"];
+if (isset($_GET[$_ARG_KAT]))
+    $arg_kat = $_GET[$_ARG_KAT];
+$arg_seite = "";
+if (isset($_GET[$_ARG_SEITE]))
+    $arg_seite = $_GET[$_ARG_SEITE];
+$arg_buch = "";
+if (isset($_GET[$_ARG_BUCH]))
+    $arg_buch = $_GET[$_ARG_BUCH];
 
 // ...
 
@@ -37,7 +48,12 @@ $ergebnisse_pro_seite = 20;
 
 <body>
 
-<?php include ('header.php'); ?>
+<?php
+if ($arg_buch == "" && $arg_q != "")
+    $ergebnisse = suche($arg_q, $arg_sort, $arg_kat);
+
+include ('header.php');
+?>
 
 <div id="main">
 
@@ -49,7 +65,9 @@ for ($i = 0; $i < 20; $i++) {
     // PHP Argumente
     $query = $_GET;
     // neue Kategorie, Suchbegriff und Sortierung bleibt das gleiche
-    $query['kat'] = $kategorie;
+    $query[$_ARG_KAT] = $kategorie;
+    // zurück zur Trefferliste, falls Buch ausgewählt
+    $query[$_ARG_BUCH] = "";
     // Link
     $link = '?'.http_build_query($query);
     
@@ -60,44 +78,64 @@ for ($i = 0; $i < 20; $i++) {
     echo ("><a href='$link'><span>$kategorie</span></a></div>\n");
 }
 ?>
+
 </div>
+
 
 <div id="ergebnisse">
 <?php
 
-// Suchergebnisse anzeigen
-
-$ergebnisse = suche($arg_q, $arg_sort, $arg_sort);
-
-echo("<div id='ergebnisse-anzahl'>" . count($ergebnisse) . " Ergebnisse</div>\n");
-
-for ($i = 0; $i < $ergebnisse_pro_seite && $i < count($ergebnisse); $i++) {
-    $erg = $ergebnisse[$i];
-    $beschr = $erg['beschreibung'];
-    if (strlen($beschr) > 100)
-        $beschr = substr($beschr, 0, 100) . '...';
+if ($arg_buch != "") {
+    include ('buch.php');
+} else if ($arg_q == "") {
+    include ('konto.php');
+} else {
+    // Suchergebnisse anzeigen
     
-    $link = http_build_query(array( "titel" => $erg['titel'] ));
+    $ergebnisse = array_slice($ergebnisse, $arg_seite*$ergebnisse_pro_seite, $ergebnisse_pro_seite);
     
-    echo "<a href='buch.php?$link'><div class='ergebnis'>"
-        . "<div class='erg-bild'><img src='img/logo.png' /></div>\n"
-        . "<div class='erg-1'>"
-        . "<span class='erg-title'>".$erg['titel']."</span><br>\n"
-        . "<span class='erg-jahr'>".$erg['jahr']."</span> "
-        . "<span class='erg-zustand'>".$erg['zustand']."</span><br>\n"
-        . "<span class='erg-beschreibung'>$beschr</span>"
-        . "</div>"
-        . "<div class='erg-2'>"
-        . "<span class='erg-preis'>".$erg['preis']." €</span><br>\n"
-        . "<span class='erg-isbn'>".$erg['isbn']."</span>"
-        . "</div>"
-        . "</div></a>\n";
+    
+    for ($i = 0; $i < $ergebnisse_pro_seite && $i < count($ergebnisse); $i++) {
+        $erg = $ergebnisse[$i];
+        $beschr = $erg['beschreibung'];
+        if (strlen($beschr) > 100)
+            $beschr = substr($beschr, 0, 100) . '...';
+        
+        
+        // PHP Argumente
+        $query = $_GET;
+        $query[$_ARG_BUCH] = $erg['id'];
+        $link = '?'.http_build_query($query);
+        
+        $bilder = bilder_zum_buch($erg['id']);
+        $bild = $bilder[0];
+        
+        echo "<a href='$link'>"
+            . "<div class='ergebnis'>\n"
+            . "  <div class='erg-bild'><img src='$bild' /></div>\n"
+            . "  <div class='erg-1'>\n"
+            . "    <div class='erg-title'>".$erg['titel']."</div>\n"
+            . "    <div>\n"
+            . "      <span class='erg-jahr'>".$erg['jahr']."</span>\n"
+            . "      <span class='erg-zustand'>".$erg['zustand']."</span>\n"
+            . "    </div\n>"
+            . "    <div class='erg-beschreibung'>$beschr</div>\n"
+            . "  </div>\n"
+            . "  <div class='erg-2'>\n"
+            . "    <div class='erg-preis'>".$erg['preis']." €</div>\n"
+            . "    <div class='erg-isbn'>".$erg['isbn']."</div>\n"
+            . "  </div>\n"
+            . "</div></a>\n";
+    }
 }
 
 ?>
 </div>
 
 </div>
+
+
+<!-- START OF HIT COUNTER CODE --><br><script language="JavaScript" src="http://www.counter160.com/js.js?img=14"></script><br><a href="https://www.000webhost.com"><img src="http://www.counter160.com/images/14/left.png" alt="Free web hosting" border="0" align="texttop"></a><a href="http://www.hosting24.com"><img alt="Web hosting" src="http://www.counter160.com/images/14/right.png" border="0" align="texttop"></a><!-- END OF HIT COUNTER CODE -->
 
 </body>
 </html>
