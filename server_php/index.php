@@ -21,6 +21,7 @@ $_ARG_SORT = "sort";// Sortieren: 0: Name aufsteigend, 1: absteigend, 2: Preis a
 $_ARG_KAT = "kat";// Suche in Kategorien
 $_ARG_SEITE = "p";// Nummer der Seite in Trefferliste
 $_ARG_BUCH = "buch";// Details zum Buch
+$_ARG_LOGIN = "login";// Ein- / Ausloggen
 
 // Abfrege der Argumente aus URL
 $arg_q = "";
@@ -49,8 +50,12 @@ $ergebnisse_pro_seite = 20;
 <body>
 
 <?php
-if ($arg_buch == "" && $arg_q != "")
+include("login.php");
+
+if ($arg_buch == "" && ($arg_q != "" || $arg_kat != ""))
     $ergebnisse = suche($arg_q, $arg_sort, $arg_kat);
+else if (!$benutzer_eingeloggt)
+    $ergebnisse = suche($arg_q, $arg_sort, $arg_kat);//ggf leere Suche -> zB neueste Bücher usw
 
 include ('header.php');
 ?>
@@ -68,6 +73,8 @@ for ($i = 0; $i < 20; $i++) {
     $query[$_ARG_KAT] = $kategorie;
     // zurück zur Trefferliste, falls Buch ausgewählt
     $query[$_ARG_BUCH] = "";
+    if ($arg_buch != "")
+        $query[$_ARG_SEITE] = "";
     // Link
     $link = '?'.http_build_query($query);
     
@@ -87,7 +94,7 @@ for ($i = 0; $i < 20; $i++) {
 
 if ($arg_buch != "") {
     include ('buch.php');
-} else if ($arg_q == "") {
+} else if ($benutzer_eingeloggt && $arg_q == "" && $arg_kat == "") {
     include ('konto.php');
 } else {
     // Suchergebnisse anzeigen
