@@ -1,0 +1,10 @@
+
+
+Steven Chumak
+02.03.2016 15:00 - 19:40
+Überarbeitung des von Benjamin erstellten Templates
+	Style1.css
+
+----------
+02.03
+einige änderungen der Style.css Datei vorgenommen

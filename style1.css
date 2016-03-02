@@ -1,0 +1,239 @@
+
+body {
+    background-color: #FFFFFF;
+    font-family: "Arial", Arial, serif;
+}
+
+/* Header */
+#header {
+    margin-top: -8;
+    margin-bottom: 1;
+    margin-left: -8;
+    margin-right: -8;
+    padding: 10px;
+    background-color: 468847;
+    border: 1px solid;
+}
+
+
+/* obere Zeile */
+#logo {
+    display: inline;
+}
+#login {
+    float: right;
+    display: inline;
+}
+
+/* untere Zeile */
+#header-unten {
+    padding-top: 10;
+}
+.header-item {
+    height: 30;
+    display: inline;
+}
+
+#header-unten button {
+    background-color: #FFFFFF;
+    border: 1px solid;
+}
+#header-unten a {
+    text-decoration: none;
+    color: black;
+}
+#header-unten button:hover {
+    opacity: 0.7;
+}
+#header-unten form {
+    display: inline;
+}
+#zuruecktaste {
+    display: inline;
+    margin-left: 100px;
+}
+#ergebnisliste-steuerung {
+    float: right;
+}
+#ergebnisliste-steuerung div {
+    margin-left: 20px;
+}
+#seiten span {
+    font-size: 150%;
+    text-align: middle;
+    margin-left: 2;
+    margin-right: 5;
+}
+.taste-seitenwahl-grau {
+    background-color: #AAAAAA !important;
+}
+.taste-seitenwahl-grau:hover {
+    opacity: 1 !important;
+}
+#sortierung-ausgewaehlt {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+#main {
+    width: 100%;
+    overflow: hidden;
+    margin-left: -8;
+}
+
+/* Kategorien */
+#kategorie-liste {
+    background-color: #468847;
+    width: 14%;
+    float: left;
+    border: 1px solid;
+
+}
+/* Link nicht unterstreichen */
+.kategorie a {
+    text-decoration: none;
+    color: black;
+    margin-left: 13;
+}
+.kategorie a:hover {
+    text-decoration: underline;
+}
+#kategorie-ausgewaehlt {
+    font-size: 130%;
+    font-weight: bold;
+}
+
+
+/* Ergebnisse */
+#ergebnisse {
+    width: 85%;
+    float: right;
+}
+#ergebnisse a {
+    text-decoration: none;
+    color: black;
+}
+.ergebnis {
+    height: 80px;
+    margin: 5;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: D0C1C1;
+    background-color: #F6F3F3;
+}
+.ergebnis:hover {
+    background-color: #6BF0FF;
+}
+.erg-bild {
+    width:80px;
+    height:80px;
+    display: inline-block;
+}
+.erg-bild img {
+    max-width:80px;
+    max-height:80px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.erg-1 {
+    display: inline-block;
+    height:80px;
+    vertical-align: top;
+}
+.erg-title {
+    font-size: 120%;
+    margin-bottom: 10px;
+}
+.erg-jahr {
+    margin-right: 10px;
+}
+.erg-beschreibung {
+    margin-top: 5px;
+    font-size: 80%;
+}
+.erg-2 {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    height:80px;
+    vertical-align: top;
+}
+.erg-preis {
+    font-size: 120%;
+}
+
+
+/* Buch */
+#buch-details {
+    margin: 10x;
+}
+#buch-bild-gross {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #AAAAAA;
+}
+#buch-bild-gross img {
+    display: block;
+    max-width:350px;
+    max-height:350px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#buch-bilder-klein {
+    overflow: none;
+    max-width:360px;
+}
+.buch-bild-klein {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #FAFAFA;
+    border: 1px solid #AAAAAA;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.buch-bild-klein:hover {
+    opacity: 0.5;
+}
+.buch-bild-klein img {
+    display: block;
+    max-width:50px;
+    max-height:50px;
+    width: auto;
+    height: auto;
+    /* in die Mitte */
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#buch-bilder {
+    display: inline-block;
+}
+#buch-daten {
+    display: inline-block;
+    vertical-align: top;
+}
+#buch-daten div {
+    padding-bottom: 20px;
+}
+#buch-titel {
+    font-size: 200%;
+}
+#buch-isbn {
+    font-size: 120%;
+}
+#buch-preis {
+    font-size: 150%;
+}
