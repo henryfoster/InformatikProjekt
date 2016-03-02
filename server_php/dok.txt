@@ -33,4 +33,9 @@ Funktionen: (immer noch nur mit zufälligen Testdaten)
  sortieren($erg, $sort) : liefert die sortierte Liste
  quicksort($erg, $arg) : liefert die nach $arg (titel, preis, etc) sortierte Liste
 
--
+
+----------
+01.03.2016
+21:00-23:00
+
+Login-System und Registrierung (zum Anmelden mit selbem E-Mail und Passwort)
