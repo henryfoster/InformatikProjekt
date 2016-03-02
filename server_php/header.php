@@ -2,7 +2,38 @@
 
     <div id="header-oben">
         <div id="logo"><a href="."><img src="img/logo.png"/></a> TEST</div>
-        <div id="login"><a href="login.php">Einloggen / Resgistrieren</a></div>
+        <div id="login">
+            <?php
+            
+                if ($benutzer_eingeloggt) {//Benutzer ist eingeloggt
+
+                    $query = $_GET;
+                    $query[$_ARG_LOGIN] = '0';
+                    $link = '?'.http_build_query($query);
+                    
+                    $userid = $_SESSION['userid'];
+                    echo "Angemeldet als: $userid<br><a href='$link'>Ausloggen</a>";
+
+                } else {// nicht eingeloggt
+
+                    $query = $_GET;
+                    $query[$_ARG_LOGIN] = '1';
+                    $link = '?'.http_build_query($query);
+
+            ?>
+                    <form action='<?php echo $link; ?>' method='post'>
+                    E-Mail: <input type='email' name='email'>
+                    Passwort: <input type='password' name='passwort'>
+                    <input type='submit' value='Abschicken'>
+                    </form><br>
+                    <a href='registrierung.php'>Registrierung</a>
+            <?php
+                    if ($fehler != '') {
+                        echo("$fehler");
+                    }
+                }
+            ?>
+        </div>
     </div>
 
     <div id="header-unten">
