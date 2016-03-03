@@ -1,14 +1,18 @@
 
 body {
-    background-color: #9EF5FF;
+    background-color: #FFFFFF;
     font-family: "Arial", Arial, serif;
 }
 
 /* Header */
 #header {
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #AACC00;
+    margin-top: -8;
+    margin-bottom: 1;
+    margin-left: -8;
+    margin-right: -8;
+    padding: 10px;
+    background-color: 468847;
+    border: 1px solid;
 }
 
 
@@ -31,12 +35,12 @@ body {
 }
 
 #header-unten button {
-    background-color: #88AA00;
-    border: 0;
+    background-color: #FFFFFF;
+    border: 1px solid;
 }
 #header-unten a {
     text-decoration: none;
-    color: blue;
+    color: black;
 }
 #header-unten button:hover {
     opacity: 0.7;
@@ -57,6 +61,8 @@ body {
 #seiten span {
     font-size: 150%;
     text-align: middle;
+    margin-left: 2;
+    margin-right: 5;
 }
 .taste-seitenwahl-grau {
     background-color: #AAAAAA !important;
@@ -73,24 +79,28 @@ body {
 #main {
     width: 100%;
     overflow: hidden;
+    margin-left: -8;
 }
 
 /* Kategorien */
 #kategorie-liste {
-    background-color: #BBDD11;
-    width: 15%;
+    background-color: #468847;
+    width: 14%;
     float: left;
+    border: 1px solid;
+
 }
 /* Link nicht unterstreichen */
 .kategorie a {
     text-decoration: none;
-    color: blue;
+    color: black;
+    margin-left: 13;
 }
 .kategorie a:hover {
     text-decoration: underline;
 }
 #kategorie-ausgewaehlt {
-    font-size: 120%;
+    font-size: 130%;
     font-weight: bold;
 }
 
@@ -108,7 +118,9 @@ body {
     height: 80px;
     margin: 5;
     overflow: hidden;
-    background-color: #40ECFF;
+    border: 1px solid;
+    border-color: D0C1C1;
+    background-color: #F6F3F3;
 }
 .ergebnis:hover {
     background-color: #6BF0FF;
@@ -159,17 +171,17 @@ body {
 
 /* Buch */
 #buch-details {
-    margin: 5px;
+    margin: 10x;
 }
 #buch-bild-gross {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border: 1px solid #AAAAAA;
 }
 #buch-bild-gross img {
     display: block;
-    max-width:400px;
-    max-height:400px;
+    max-width:350px;
+    max-height:350px;
     width: auto;
     height: auto;
     /* in die Mitte */
@@ -180,7 +192,7 @@ body {
 }
 #buch-bilder-klein {
     overflow: none;
-    max-width:400px;
+    max-width:360px;
 }
 .buch-bild-klein {
     display: inline-block;
