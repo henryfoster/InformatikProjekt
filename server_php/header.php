@@ -25,7 +25,7 @@
                     E-Mail: <input type='email' name='email'>
                     Passwort: <input type='password' name='passwort'>
                     <input type='submit' value='Abschicken'>
-                    </form><br>
+                    </form>
                     <a href='registrierung.php'>Registrierung</a>
             <?php
                     if ($fehler != '') {
