@@ -1,7 +1,9 @@
 <div id="header">
 
+    <div id="logo"><a href="."><img src="img/logo.png"/></a></div>
+    
+    <div id="header-text">
     <div id="header-oben">
-        <div id="logo"><a href="."><img src="img/logo.png"/></a> TEST</div>
         <div id="login">
             <?php
             
@@ -113,6 +115,7 @@
             
             }
             ?>
+        </div>
         </div>
         
     </div>
