@@ -13,21 +13,28 @@ body {
     padding: 10px;
     background-color: 468847;
     border: 1px solid;
+    height: 210px;
 }
 
 
 /* obere Zeile */
 #logo {
-    display: inline;
+    float: left;
+}
+#header-text {
+    height: 210px;
+    position: relative;
 }
 #login {
     float: right;
-    display: inline;
+    display: inline-block;
 }
 
 /* untere Zeile */
 #header-unten {
-    padding-top: 10;
+    position: absolute;
+    bottom: 0;
+    padding-left: 220px;
 }
 .header-item {
     height: 30;
