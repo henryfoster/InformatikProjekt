@@ -21,7 +21,7 @@ http://mfsb.site88.net
 
 ----------
 23.02.2016
-14:30 - 17:00
+14:30 - 18:00
 
 Einbau der Sortiertasten und Sortierfunktion
 Tasten für mehrere Seiten der Ergebnisse
@@ -39,3 +39,13 @@ Funktionen: (immer noch nur mit zufälligen Testdaten)
 21:00-23:00
 
 Login-System und Registrierung (zum Anmelden mit selbem E-Mail und Passwort)
+
+
+----------
+04.03.2016
+06:30-07:00
+Einbau des neuen Logos
+
+
+12:45-13:30
+Erstellung der Dokumentation
