@@ -64,8 +64,9 @@ include ('header.php');
 
 <div id="kategorie-liste">
 <?php
-for ($i = 0; $i < 20; $i++) {
-    $kategorie = "Kategorie $i";
+$kategorien = [ 'Deutsch', 'Englisch', 'Französisch', 'Russisch', 'Kunst', 'Musik', 'Politikwissenschaft', 'Gescichte', 'Geographie', 'Mathematik', 'Informatik', 'Physik', 'Chemie', 'Biologie' ];
+for ($i = 0; $i < count($kategorien); $i++) {
+    $kategorie = $kategorien[$i];
     
     // PHP Argumente
     $query = $_GET;
