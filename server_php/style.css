@@ -13,16 +13,22 @@ body {
     padding: 10px;
     background-color: 468847;
     border: 1px solid;
-    height: 210px;
+    height: 160px;
+    position: relative;
 }
 
 
 /* obere Zeile */
 #logo {
-    float: left;
+    position: absolute;
+    left: 15px;
+    display: inline-block;
+}
+#logo img {
+    width: 150px;
 }
 #header-text {
-    height: 210px;
+    height: 160px;
     position: relative;
 }
 #login {
