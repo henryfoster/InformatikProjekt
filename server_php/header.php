@@ -14,7 +14,7 @@
                     $link = '?'.http_build_query($query);
                     
                     $userid = $_SESSION['userid'];
-                    echo "Angemeldet als: $userid<br><a href='$link'>Ausloggen</a> <a href='.'>Konto</a>";
+                    echo("Angemeldet als: $userid<br><a href='$link'>Ausloggen</a> <a href='.'>Konto</a>");
 
                 } else {// nicht eingeloggt
 
@@ -53,6 +53,13 @@
             </button>
         
         </form>
+            
+            
+        <?php
+            if ($arg_q != "") {
+                echo("<a href='.'><button id='neuesuche' class='header-item'><img src='img/links.png'/><span>Neue Suche</span></button></a>\n");
+            }
+        ?>
             
         <div class='header-item' id='ergebnisliste-steuerung'>
             <?php
