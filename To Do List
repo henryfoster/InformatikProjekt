@@ -6,3 +6,27 @@ Website:
 Noten:
 - Dokumentation
 - Präsentation
+
+
+11.03.2016
+
+Datenbank mit folgenden Tabellen erstellen:
+- Benutzer: EMail, Benutzername, Passwort
+- Bücher: BuchID, Titel, ISBN, Verlag, Jahr, Beschreibung, Zustand, EMail, Preis, Kategorien, Klasse1, Klasse2, Datum, Status
+- Bilder: BildID, BuchID
+- Nachrichten: NachrichtID, EMailSender EMailZiel, BuchID, Text, Gelesen, Datum
+Relationen:
+EMail Benutzer-Bücher
+BuchID Bücher-Bilder
+EMail Benutzer-Nachrichten
+
+SQL-Abfragen in die funktionen.php einbauen
+
+Seite für Aufgabe von Anzeigen erstellen
+
+Kontoseite ergänzen:
+- Aufgegebene Anzeigen mit Status und Löschfunktion
+- Nachrichten lesen
+- neue Anzaige aufgeben
+- Konto löschen
+- Passwort verändern
