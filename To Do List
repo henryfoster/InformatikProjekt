@@ -20,7 +20,7 @@ EMail Benutzer-Bücher
 BuchID Bücher-Bilder
 EMail Benutzer-Nachrichten
 
-SQL-Abfragen in die funktionen.php einbauen
+SQL-Abfragen in die Bibliothek (funktionen.php) einbauen
 
 Seite für Aufgabe von Anzeigen erstellen
 
