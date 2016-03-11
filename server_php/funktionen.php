@@ -4,9 +4,13 @@
 /*
 
 z.B.:
-Suchergebnis: Liste [ ID, Titel, ISBN, Jahr, Beschreibung, Zustand, Kontakt, Preis ]
+Suchergebnis: Liste [ ID, Titel, ISBN, Verlag, Jahr, Beschreibung, Zustand, Kontakt, Preis, [Kategorien], Klasse1, Klasse2, Datum, Status ]
+Klasse: Klasse1 - Klasse2, zB.: 12-13 oder 8-8 wenn nur eine, 0-0 wenn nicht angegeben
+Status: 0: aktiv, 1: deaktiviert 2: verkauft
 
 */
+
+$kategorien = [ 'Allgemein', 'Biologie', 'Chemie', 'Deutsch', 'Englisch', 'Französisch', 'Geographie', 'Geschichte', 'Informatik', 'Kunst', 'Mathematik', 'Musik', 'Physik', 'Politikwissenschaft', 'Russisch', 'Tafelwerk' ];
 
 
 // Vor.: ...
@@ -75,9 +79,33 @@ function quicksort($erg, $arg) {
 }
 
 
+// Nachricht [ ID, EMailSender, EMailEmpfänger, BuchID, Text, Datum ]
+// Eff.: liefert die Nachrichten, die der Benutzer gesendet hat
+function nachrichten_gesendetvon($email_sender) {
+    $n = array();
+    
+    // ...
+    
+    return $n;
+}
+// Eff.: liefert die Nachrichten, die dem Benutzer gesendet sind
+function nachrichten_fuer($email_ziel) {
+    $n = array();
+    
+    // ...
+    
+    return $n;
+}
+function nachricht_senden($email_sender, $email_ziel, $buch_id, $text) {
+    
+    // ...
+    
+}
+
+
 // zum Testen
 function randombuch($q) {
-    global $beschreibung;
+    global $beschreibung, $kategorien;
 
     $jahr = rand(1990, 2016);
     $isbn = "978-3-";
@@ -91,6 +119,10 @@ function randombuch($q) {
     
     $preis = rand(1, 50);
     
+    $kat = array();
+    array_push($kat, $kategorien[rand(0, count($kategorien)-1)]);
+    array_push($kat, $kategorien[rand(0, count($kategorien)-1)]);
+    
     return array (
         "id" => "B" . rand(500000, 999999),
         "titel" => "$q buch " . rand(1000, 9999),
@@ -99,7 +131,13 @@ function randombuch($q) {
         "beschreibung" => $beschreibung,
         "zustand" => "Guter Zustand",
         "kontakt" => "email" . rand(1000,9999) . "@email.com",
-        "preis" => $preis
+        "preis" => $preis,
+        "kategorien" => $kat,
+        "klasse1" => rand(1,13),
+        "klasse2" => rand(1,13),
+        "verlag" => $kat[0]."Verlag",
+        "datum" => mktime(11, 14, 54, 8, 12, 2014),
+        "status" => 0
     );
 }
 
