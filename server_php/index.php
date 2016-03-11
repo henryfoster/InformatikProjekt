@@ -22,6 +22,7 @@ $_ARG_KAT = "kat";// Suche in Kategorien
 $_ARG_SEITE = "p";// Nummer der Seite in Trefferliste
 $_ARG_BUCH = "buch";// Details zum Buch
 $_ARG_LOGIN = "login";// Ein- / Ausloggen
+$_ARG_NACHRICHT = "nachricht";
 
 // Abfrege der Argumente aus URL
 $arg_q = "";
@@ -39,6 +40,10 @@ if (isset($_GET[$_ARG_SEITE]))
 $arg_buch = "";
 if (isset($_GET[$_ARG_BUCH]))
     $arg_buch = $_GET[$_ARG_BUCH];
+if (isset($_GET[$_ARG_NACHRICHT])) {
+    unset($_GET[$_ARG_NACHRICHT]);
+    nachricht_senden($_POST['nachricht-sender'], $_POST['nachricht-ziel'], $_POST['nachricht-buch'], $_POST['nachricht-text']);
+}
 
 // ...
 
@@ -64,7 +69,6 @@ include ('header.php');
 
 <div id="kategorie-liste">
 <?php
-$kategorien = [ 'Deutsch', 'Englisch', 'Französisch', 'Russisch', 'Kunst', 'Musik', 'Politikwissenschaft', 'Gescichte', 'Geographie', 'Mathematik', 'Informatik', 'Physik', 'Chemie', 'Biologie' ];
 for ($i = 0; $i < count($kategorien); $i++) {
     $kategorie = $kategorien[$i];
     
