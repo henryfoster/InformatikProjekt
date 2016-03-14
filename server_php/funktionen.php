@@ -10,7 +10,7 @@ Status: 0: aktiv, 1: deaktiviert 2: verkauft
 
 */
 
-$kategorien = [ 'Allgemein', 'Biologie', 'Chemie', 'Deutsch', 'Englisch', 'Französisch', 'Geographie', 'Geschichte', 'Informatik', 'Kunst', 'Mathematik', 'Musik', 'Physik', 'Politikwissenschaft', 'Russisch', 'Tafelwerk' ];
+$kategorien = array ( 'Allgemein', 'Biologie', 'Chemie', 'Deutsch', 'Englisch', 'Französisch', 'Geographie', 'Geschichte', 'Informatik', 'Kunst', 'Mathematik', 'Musik', 'Physik', 'Politikwissenschaft', 'Russisch', 'Tafelwerk' );
 
 
 // Vor.: ...
@@ -103,6 +103,64 @@ function nachricht_senden($email_sender, $email_ziel, $buch_id, $text) {
 }
 
 
+// eigene Bücher verwalten
+function meine_buecher($email) {
+    $b = array();
+
+    array_push($b, randombuch ($email));
+    array_push($b, randombuch ($email));
+
+    return $b;
+}
+function buch_aufgeben() {
+    return true;
+}
+
+
+// SQL Tabellen erstellen
+function mysql_test() {
+$servername = "localhost";
+$username = "root";
+$password = "pass";
+$dbname = "mfsb";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$table = 'Benutzer';
+if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$table."'"))==1) 
+    echo "Table exists";
+else echo "Table does not exist";
+
+// sql to create table
+$tabelle_benutzer = "CREATE TABLE Benutzer (
+email VARCHAR(50) NOT NULL,
+benutzername VARCHAR(30) NOT NULL,
+passwort VARCHAR(30) NOT NULL,
+reg_datum TIMESTAMP
+)";
+$tabelle = "CREATE TABLE Benutzer (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table MyGuests created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+$conn->close();
+}
+
+
 // zum Testen
 function randombuch($q) {
     global $beschreibung, $kategorien;
@@ -149,4 +207,3 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
 Consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
 
-?>
