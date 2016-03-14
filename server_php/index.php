@@ -1,7 +1,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <html lang="de">
 <head>
-<title>MfSb beta</title>
+<title>Markt für Schulbücher</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
