@@ -1,0 +1,16 @@
+
+
+bitte im folgenden Format, damit ich die direkt in die Datenbank eingeben kann:
+
+"INSERT INTO Buecher VALUES ('$id', 'Titel', 'ISBN', 'Verlag', Jahr, 'Beschreibung', 'Zustand', 'EMail', Preis, 'Kategorie', Klasse1, Klasse2, 0, CURDATE());"
+
+Klasse1 - Klasse2 zB 7-12, 12-13 oder 13-13 ...
+Kategorie: eine von
+'Allgemein', 'Biologie', 'Chemie', 'Deutsch', 'Englisch', 'Französisch', 'Geographie', 'Geschichte', 'Informatik', 'Kunst', 'Mathematik', 'Musik', 'Physik', 'Politikwissenschaft', 'Russisch', 'Tafelwerk' oder wenn ich was vergessen habe, können wir die Liste ergänzen
+
+
+zB:
+
+"INSERT INTO Buecher VALUES ('$id', 'Info Sek2', '165-591-181-5', 'SchulbuchVerlag', 2012, 'Info Buch, das ich verkaufe, nie benutzt, keine ahnung ...', 'Perfekter Zustand', 'meineemail@rvo.de', 30, 'Informatik', 12, 13, 0, CURDATE());"
+
+"INSERT INTO Buecher VALUES ('$id', 'Chemie Heute', '165-591-181-5', 'Schroeder', 1980, 'schönes buch', 'guter Zustand', 'meineemail@rvo.de', 10, 'Chemie', 11, 13, 0, CURDATE());"
