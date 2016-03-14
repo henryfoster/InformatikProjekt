@@ -1,16 +1,27 @@
 <?php
 
 function passwort_pruefen($email, $passwort) {
+    mysql_verbinden();
     
-    // ...
+    $q = "SELECT * FROM Benutzer WHERE EMail LIKE '$email'";
     
-    return $email == $passwort;
+    $pass = mysql_fetch_array(mysql_query($q))['Passwort'];
+    
+    mysql_close();
+
+    return $pass == $passwort;
 }
-function user_id($email) {
+function benutzername($email) {
     
-    // ...
+    mysql_verbinden();
     
-    return $email;
+    $q = "SELECT * FROM Benutzer WHERE EMail LIKE '$email'";
+    
+    $benutzer = mysql_fetch_array(mysql_query($q))['Benutzername'];
+    
+    mysql_close();
+    
+    return $benutzer;
 }
 
 session_start();
@@ -32,7 +43,7 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] != '') {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
     
-    $userid = user_id($email);
+    $userid = $email;
             
     //Überprüfung des Passworts
     if ($userid != "" && passwort_pruefen($email, $passwort)) {
