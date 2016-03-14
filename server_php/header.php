@@ -13,7 +13,7 @@
                     $query[$_ARG_LOGIN] = '0';
                     $link = '?'.http_build_query($query);
                     
-                    $userid = $_SESSION['userid'];
+                    $userid = benutzername($_SESSION['userid']);
                     echo("Angemeldet als: $userid<br><a href='$link'>Ausloggen</a> <a href='.'>Konto</a>");
 
                 } else {// nicht eingeloggt
