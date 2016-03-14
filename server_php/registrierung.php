@@ -1,5 +1,8 @@
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<html lang="de">
 <?php 
 session_start();
+include("funktionen.php");
 ?>
 <html> 
 <head>
@@ -16,30 +19,27 @@ if(isset($_GET['register'])) {
     $passwort = $_POST['passwort'];
     $passwort2 = $_POST['passwort2'];
     $fehler = "";
-
+    
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $fehler = 'Die E-Mail-Adresse ist ungültig';
     }
-    if(strlen($passwort) == 0) {
+    else if(!isset($benutzer) || count($benutzer) == 0) {
+        $fehler = 'Benutzername ist leer';
+    }
+    else if(strlen($passwort) == 0) {
         $fehler = 'Passwort fehlt';
     }
-    if($passwort != $passwort2) {
+    else if($passwort != $passwort2) {
         $fehler = 'Die zwei Passwörter müssen übereinstimmen';
     }
     // Prüfen, ob E-Mail schon regitriert ist
-    if ($email != $passwort) {//test
+    else if (registrierung_email_pruefen($email)) {
         $fehler = 'Diese E-Mail-Adresse ist bereits vergeben';
     }
     
     if($fehler == "") {
         
-        
-        //$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
-        //$statement = $pdo->prepare("INSERT INTO users (email, passwort) VALUES (:email, :passwort)");
-        //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
-        // ...
-        
-        $reg = true;//erfolgreich
+        $reg = registrierung($email, $passwort, $benutzer);
         
         
         if ($reg) {
@@ -56,6 +56,8 @@ if(!$reg) {
 <form action="?register=1" method="post">
 E-Mail:<br>
 <input type="email" name="email"><br><br> 
+Benutzername:<br>
+<input name="benutzer"><br><br> 
 Passwort: <br>
 <input type="password" name="passwort"><br>
 Passwort wiederholen: <br>
