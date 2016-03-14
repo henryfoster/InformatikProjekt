@@ -250,3 +250,19 @@ body {
 #buch-preis {
     font-size: 150%;
 }
+
+
+
+/* Konto */
+#konto a {
+    text-decoration: underline;
+}
+.mein-buch {
+    background-color: #468847;
+}
+.mein-buch a {
+    text-decoration: none !important;
+}
+.mein-buch-deaktivieren a {
+    text-decoration: none !important;
+}
