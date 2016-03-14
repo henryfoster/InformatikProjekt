@@ -1,6 +1,6 @@
 <?php
 $buch = suche_id($arg_buch);
-$bilder = bilder_zum_buch($buch['id']);
+$bilder = bilder_zum_buch($buch['BuchID']);
 ?>
 
 <div id="buch-details">
@@ -16,28 +16,22 @@ $bilder = bilder_zum_buch($buch['id']);
             </div>
         </div>
         <div id="buch-daten">
-            <div id="buch-titel"><?php echo($buch['titel']); ?></div>
-            <div id="buch-isbn">ISBN: <?php echo($buch['isbn']); ?></div>
-            <div id="buch-verlag">Verlag: <?php echo($buch['verlag']); ?></div>
-            <div id="buch-jahr">Jahr: <?php echo($buch['jahr']); ?></div>
-            <div id="buch-kategorien">Fächer: <?php
-                for ($i = 0; $i < count($buch['kategorien']); $i++) {
-                    echo($buch['kategorien'][$i]);
-                    if ($i < count($buch['kategorien']) - 1)
-                        echo(', ');
-                }
-            ?></div>
+            <div id="buch-titel"><?php echo($buch['Titel']); ?></div>
+            <div id="buch-isbn">ISBN: <?php echo($buch['ISBN']); ?></div>
+            <div id="buch-verlag">Verlag: <?php echo($buch['Verlag']); ?></div>
+            <div id="buch-jahr">Jahr: <?php echo($buch['Jahr']); ?></div>
+            <div id="buch-kategorien">Fach <?php echo($buch['Kategorien']); ?></div>
             <div id="buch-klasse">Klasse: <?php
-                if ($buch['klasse1'] == 0)
+                if ($buch['Klasse1'] == 0)
                     echo("Nicht angegeben");
-                else if ($buch['klasse1'] == $buch['klasse2'])
-                    echo($buch['klasse1']);
+                else if ($buch['Klasse1'] == $buch['Klasse2'])
+                    echo($buch['Klasse1']);
                 else
-                    echo($buch['klasse1'] . ' - ' . $buch['klasse2']);
+                    echo($buch['Klasse1'] . ' - ' . $buch['Klasse2']);
             ?></div>
-            <div id="buch-zustand"><?php echo($buch['zustand']); ?></div>
-            <div id="buch-datum">Aufgegeben: <?php echo(date('d.m.Y', $buch['datum'])); ?></div>
-            <div id="buch-preis">Preis: <b><?php echo($buch['preis']); ?> €</b></div>
+            <div id="buch-zustand"><?php echo($buch['Zustand']); ?></div>
+            <div id="buch-datum">Aufgegeben: <?php echo($buch['Datum']); ?></div>
+            <div id="buch-preis">Preis: <b><?php echo($buch['Preis']); ?> €</b></div>
             
             <?php
                 $query = $_GET;
@@ -45,7 +39,7 @@ $bilder = bilder_zum_buch($buch['id']);
                 $link = '?'.http_build_query($query);
                 if ($benutzer_eingeloggt) { ?>
                 <div id="buch-kontakt">
-                    Verkäufer: <?php echo($buch['kontakt']); ?><br>
+                    Verkäufer: <?php echo($buch['EMail']); ?><br>
                     <form action='<?php echo $link; ?>' method='post'>
                     <input type='hidden' name='nachricht-sender' value='<?php echo($_SESSION['userid']); ?>'></input>
                     <input type='hidden' name='nachricht-ziel' value='<?php echo($buch['kontakt']); ?>'></input>
@@ -59,7 +53,7 @@ $bilder = bilder_zum_buch($buch['id']);
             <?php } ?>
         </div>
     </div>
-    <div id="buch-beschreibung">
-        <?php echo($buch['beschreibung']); ?>
+    <div id="buch-beschreibung">Beschreibung:<br>
+        <?php echo($buch['Beschreibung']); ?>
     </div>
 </div>
