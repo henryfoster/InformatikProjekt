@@ -76,7 +76,7 @@
                 $query[$_ARG_SEITE] = $arg_seite + 1;
                 $link2 = '?'.http_build_query($query);
                 
-                $max_seite = count($ergebnisse)/$ergebnisse_pro_seite;
+                $max_seite = ceil(count($ergebnisse)/$ergebnisse_pro_seite);
                 
                 
                 echo("<span class='header-item'>" . count($ergebnisse) . " Ergebnisse</span>\n");
