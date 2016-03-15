@@ -10,7 +10,7 @@ echo ("<div id='konto-benutzer'><h3>".$_SESSION['userid']."<br>".benutzername($_
 <?php
 $anz = meine_buecher($_SESSION['userid']);
 if (count($anz) == 0) {
-    echo("Keine aufgegebene Bücher");
+    echo("Keine aufgegebenen Bücher");
 }
 for ($i = 0; $i < count($anz); $i++) {
     $a = $anz[$i];
