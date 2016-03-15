@@ -13,9 +13,48 @@ body {
     padding: 10px;
     background-color: 468847;
     border: 1px solid;
-    height: 160px;
+    height: 105px;
     position: relative;
 }
+
+/* Buch aufgeben */
+#buch-aufgeben{
+    width: 85%;
+    float: right;
+    margin-left: -660px;
+    height: 275px;
+    border: 1px solid;
+    border-color: D0C1C1;
+    background-color: #F6F3F3;  
+}
+
+#bucha {
+    margin-top: 10;
+    text-decoration: none;
+    color: black;
+    margin-left: 13;
+}   
+
+/* Registration */
+#register {
+    width: 85%;
+    float: right;
+    margin-top: -315px;
+    height: 275px;
+    border: 1px solid;
+    border-color: D0C1C1;
+    background-color: #F6F3F3;
+
+}
+.register:hover {
+    background-color: #6BF0FF;
+}
+#registera {
+    margin-top: 8;
+    text-decoration: none;
+    color: black;
+    margin-left: 13;
+}   
 
 
 /* obere Zeile */
@@ -23,12 +62,14 @@ body {
     position: absolute;
     left: 15px;
     display: inline-block;
+    
 }
 #logo img {
-    width: 150px;
+    width: 115px;
 }
 #header-text {
-    height: 160px;
+    height: 120px;
+    margin-left: -50px;
     position: relative;
 }
 #login {
