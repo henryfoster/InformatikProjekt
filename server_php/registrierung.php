@@ -23,7 +23,7 @@ if(isset($_GET['register'])) {
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $fehler = 'Die E-Mail-Adresse ist ungültig';
     }
-    else if(!isset($benutzer) || count($benutzer) == 0) {
+    else if(!isset($benutzer) || strlen($benutzer) == 0) {
         $fehler = 'Benutzername ist leer';
     }
     else if(strlen($passwort) == 0) {
@@ -53,18 +53,23 @@ if(isset($_GET['register'])) {
 if(!$reg) {
 ?>
  
-<form action="?register=1" method="post">
+<div id="register">
+<form style="" action="?register=1" method="post">
+<div id="registera">
 E-Mail:<br>
-<input type="email" name="email"><br><br> 
+<input name="email" type="email"><br><br> 
+
 Benutzername:<br>
-<input name="benutzer"><br><br> 
+<input style="outline: 1px solid rgb(255, 0, 0); -moz-outline-radius: 5px;" name="benutzer"><br><br> 
+
 Passwort: <br>
-<input type="password" name="passwort"><br>
+<input name="passwort" type="password"><br>
+
 Passwort wiederholen: <br>
-<input type="password" name="passwort2"><br><br>
+<input style="outline: 1px solid rgb(255, 0, 0); -moz-outline-radius: 5px;" name="passwort2" type="password"><br><br>
  
-<input type="submit" value="Abschicken">
-</form>
+<input value="Abschicken" type="submit">
+</div></form></div>
  
 <?php
     echo($fehler);
