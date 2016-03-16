@@ -8,6 +8,11 @@ include('login.php');
 echo('Bücher zur Datenbank hinufügen...<br>');
 
 
+mysql_verbinden();
+mysql_query("UPDATE Buecher SET Kategorien='Russisch' WHERE Titel LIKE 'Russisch für Anfänger'");
+mysql_close();
+
+/*
 buch_aufgeben('Duden Informatik: Angewandte Informatik mit Office-Paketen Sekundarstufe I und II', '978-3-8355-6006-2', 'Duden Schulbuch', 2007, 'Info Buch, das ich verkaufe, kaum Gebrauchsspuren', 'guter Zustand', 'GustafZole@rvo.de', 30, 'Informatik', 7, 13);
 buch_aufgeben('Informatische Grundbildung Sekundarstufe I Lehrbuch. Gesamtband', '978-3-8355-6004-8', '	Duden Schulbuch', 2008, 'Info Buch, kaum Gebrauchsspuren', 'Perfekter Zustand', 'hanspeter@rvo.de', 30, 'Informatik', 7, 10);
 //buch_aufgeben('Schulbuch un', 30, 'Informatik', 12, 13);
@@ -37,7 +42,7 @@ buch_aufgeben('Chemie für Anfänger', '154-561-133-1', 'KausaVerlag', 2000, 'al
 buch_aufgeben('Russisch für Anfänger', '154-561-133-2', 'KausaVerlag', 2000, 'altes gutes Russisch Buch', 'guter Zustand', 'karmabuch@rvo.de', 15, 'Chemie', 11, 12);
 buch_aufgeben('Französisch für Anfänger', '154-561-133-3', 'KausaVerlag', 2000, 'altes gutes Französisch Buch', 'guter Zustand', 'Sandrascholz@rvo.de', 12, 'Chemie', 11, 12);
 buch_aufgeben('Biologie für Anfänger', '154-561-133-4', 'KausaVerlag', 2000, 'altes gutes Bio Buch', 'guter Zustand', 'Sandrascholz@rvo.de', 12, 'Chemie', 11, 12);
-
+*/
 echo('Alles OK<br>');
 
 ?>
