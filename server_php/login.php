@@ -5,7 +5,8 @@ function passwort_pruefen($email, $passwort) {
     
     $q = "SELECT * FROM Benutzer WHERE EMail LIKE '$email'";
     
-    $pass = mysql_fetch_array(mysql_query($q))['Passwort'];
+    $pass = mysql_fetch_array(mysql_query($q));
+    $pass = $pass['Passwort'];
     
     mysql_close();
 
@@ -17,7 +18,8 @@ function benutzername($email) {
     
     $q = "SELECT * FROM Benutzer WHERE EMail LIKE '$email'";
     
-    $benutzer = mysql_fetch_array(mysql_query($q))['Benutzername'];
+    $benutzer = mysql_fetch_array(mysql_query($q));
+    $benutzer = $benutzer['Benutzername'];
     
     mysql_close();
     
